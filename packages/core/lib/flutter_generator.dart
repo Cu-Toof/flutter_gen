@@ -56,8 +56,11 @@ class FlutterGenerator {
     }
 
     if (flutterGen.colors.enabled && flutterGen.colors.inputs.isNotEmpty) {
-      final generated =
-          generateColors(pubspecFile, formatter, flutterGen.colors);
+      final generated = generateColors(
+        pubspecFile,
+        formatter,
+        flutterGen.colors,
+      );
       final colors =
           File(normalize(join(pubspecFile.parent.path, output, colorsName)));
       writeAsString(generated, file: colors);
@@ -76,7 +79,11 @@ class FlutterGenerator {
     }
 
     if (flutterGen.fonts.enabled && flutter.fonts.isNotEmpty) {
-      final generated = generateFonts(formatter, flutter.fonts);
+      final generated = generateFonts(
+        formatter,
+        flutterGen.fonts,
+        flutter.fonts,
+      );
       final fonts =
           File(normalize(join(pubspecFile.parent.path, output, fontsName)));
       writeAsString(generated, file: fonts);
